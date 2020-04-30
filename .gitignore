@@ -1,3 +1,5 @@
 /EmailApplication/.vs
 /EmailApplication/EmailApplication/bin
 /EmailApplication/EmailApplication/obj
+/EmailApplication/EmailService/obj
+/EmailApplication/EmailService/bin
