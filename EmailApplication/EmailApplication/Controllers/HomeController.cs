@@ -14,22 +14,26 @@ namespace EmailApplication.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IEmailSender _emailSender;
+        private readonly IViewRenderService _viewRenderService;
 
-        public HomeController(ILogger<HomeController> logger, IEmailSender emailSender)
+        public HomeController(ILogger<HomeController> logger, IEmailSender emailSender, IViewRenderService viewRenderService)
         {
             _logger = logger;
             _emailSender = emailSender;
+            _viewRenderService = viewRenderService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
+            var emailModel = new WelcomeEmailModel("Mr. Teammate");
+            var emailBody = await _viewRenderService.RenderToStringAsync("Email/Welcome", emailModel);
             _emailSender.SendEmail(new List<Message>
             {
                 new Message
                 {
                     Receiver = "ahad1618017@gmail.com",
                     Subject = "Stay Home during pandemic",
-                    Body = " Thank you for staying home"
+                    Body = emailBody
                 }
             });
             return View();
