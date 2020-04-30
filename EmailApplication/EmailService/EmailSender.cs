@@ -39,7 +39,7 @@ namespace EmailService
                     mail.From.Add(new MailboxAddress("Stay Home", _senderEmail));
                     mail.To.Add(new MailboxAddress(string.Empty, message.Receiver));
                     mail.Subject = message.Subject;
-                    mail.Body = new TextPart(TextFormat.Html)
+                    mail.Body = new TextPart(TextFormat.Text)
                     {
                         Text = message.Body
                     };
