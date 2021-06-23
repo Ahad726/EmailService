@@ -31,7 +31,7 @@ namespace EmailApplication.Controllers
             {
                 new Message
                 {
-                    Receiver = "ahad1618017@gmail.com",
+                    Receiver = "Receiver Mail",
                     Subject = "Stay Home during pandemic",
                     Body = emailBody
                 }
